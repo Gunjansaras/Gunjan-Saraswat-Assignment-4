@@ -20,4 +20,15 @@ class manager:
                     return 'Book Not Found'
         else:
             return 'Invalid Book attribute!'
-    
+    def Edit(self, bookID, bookname, subject, language, authorname, date):
+        for book in self._collection:
+            if book[0] == bookID:
+                book[1] = bookname
+                book[2] = subject
+                book[3] = language
+                book[4] = authorname
+                book[5] = date
+                return book
+            
+
+

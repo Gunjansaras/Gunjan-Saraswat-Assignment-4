@@ -23,5 +23,15 @@ class Interaction:
             print(manager1.search(bookname))
         else:
             print('Invalid choice!')   
-
+    def edit(self):
+        select_book = int(input('Enter Book ID: '))
+        newbookname = input('Enter new book name: ')
+        newsubject = input('Enter new subject: ')
+        newLanguage = input('Enter the new language: ')
+        newAuthor = input("Enter the new book's Author's name: ")
+        newDate = input('Enter the new date: ')
+        manager1 = Resource_management.manager()
+        print(manager1.Edit(select_book, newbookname, newsubject, newLanguage, newAuthor, newDate))
+        
+             
         
