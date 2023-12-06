@@ -1,8 +1,8 @@
 
 class manager: 
-    def __init__(self)
+    def __init__(self):
         self._collection = []
-    def addbook(self, book):
+    def addbook(self, book = {}):
         self._collection.append(book)
         return self._collection
     def search(self, book_attribute):

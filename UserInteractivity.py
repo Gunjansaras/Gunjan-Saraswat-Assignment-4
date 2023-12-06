@@ -1,17 +1,21 @@
-import Resource_management
+import Resource_management 
 class Interaction:
     def __init__(self):
         print('Welcome to the Library system!')
     def create(self):
-        book_ID = int(input('Enter Book ID: '))
-        book_name = input('Enter book name: ')
-        Subject = input('Enter the subject of the book 1.novel or 2.Course book: ')
-        Language = input('Enter the language of the book: ')
-        Author_name = input('Enter the name of the Author: ')
-        Date_of_publication = input('Enter the date of publication: ')
-        Book = {'Book ID' : book_ID, 'Book Name' : book_name, 'Subject' : Subject, 'Language' : Language, 'Author Name' : Author_name, 'Date of Publication' : Date_of_publication}  
-        manager1 = Resource_management.manager()      
-        print(manager1.addbook(Book))
+        manager1 = Resource_management.manager()  
+        while True:
+            book_ID = int(input('Enter Book ID: '))
+            book_name = input('Enter book name: ')
+            Subject = input('Enter the subject of the book 1.novel or 2.Course book: ')
+            Language = input('Enter the language of the book: ')
+            Author_name = input('Enter the name of the Author: ')
+            Date_of_publication = input('Enter the date of publication: ')
+            Book = {'Book ID' : book_ID, 'Book Name' : book_name, 'Subject' : Subject, 'Language' : Language, 'Author Name' : Author_name, 'Date of Publication' : Date_of_publication}  
+            print(manager1.addbook(Book))
+            add_more = input('Do you want to add more books to the Library? y/n: ')
+            if add_more.lower() == 'n':
+                break
     def Read(self):
         choice = int(input('By which attribute do you want to find the book 1.BookID 2.Bookname? '))
         manager1 = Resource_management.manager()
@@ -36,6 +40,9 @@ class Interaction:
         bookID = int(input('Enter the book ID: '))
         manager1 = Resource_management.manager()
         print(manager1.delete(bookID))
-        
+
+
+interaction1 = Interaction()
+print(interaction1.create())
              
         
