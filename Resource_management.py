@@ -33,7 +33,8 @@ class manager:
         for book in self._collection:
             if book[0] == bookID:
                 print(book.pop(bookID))
-        
+    def getlist(self):
+        return self._collection
             
                 
                 
