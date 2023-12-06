@@ -29,6 +29,13 @@ class manager:
                 book[4] = authorname
                 book[5] = date
                 return book
+    def delete(self, bookID):
+        for book in self._collection:
+            if book[0] == bookID:
+                print(book.pop(bookID))
+        
             
+                
+                
 
 

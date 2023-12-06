@@ -32,6 +32,10 @@ class Interaction:
         newDate = input('Enter the new date: ')
         manager1 = Resource_management.manager()
         print(manager1.Edit(select_book, newbookname, newsubject, newLanguage, newAuthor, newDate))
+    def delete(self):
+        bookID = int(input('Enter the book ID: '))
+        manager1 = Resource_management.manager()
+        print(manager1.delete(bookID))
         
              
         
