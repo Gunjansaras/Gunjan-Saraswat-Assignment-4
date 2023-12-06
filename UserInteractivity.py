@@ -12,6 +12,16 @@ class Interaction:
         Book = {'Book ID' : book_ID, 'Book Name' : book_name, 'Subject' : Subject, 'Language' : Language, 'Author Name' : Author_name, 'Date of Publication' : Date_of_publication}  
         manager1 = Resource_management.manager()      
         print(manager1.addbook(Book))
-
+    def Read(self):
+        choice = int(input('By which attribute do you want to find the book 1.BookID 2.Bookname? '))
+        manager1 = Resource_management.manager()
+        if choice == 1:
+            bookID = int(input('Enter the ID of the book that you want to find: '))             
+            print(manager1.search(bookID))
+        elif choice == 2:
+            bookname = input('Enter the name of the book: ')
+            print(manager1.search(bookname))
+        else:
+            print('Invalid choice!')   
 
         
