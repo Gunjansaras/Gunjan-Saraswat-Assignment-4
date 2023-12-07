@@ -44,15 +44,19 @@ class Interaction:
 
 interaction1 = Interaction()
 def menu():
-    choice = int(input('Choose among the following. \n 1.Create \n 2.Read \n 3.Edit \n 4.Delete'))
-    if choice == 1:
-        print(interaction1.create())
-    elif choice == 2:
-        print(interaction1.Read())
-    elif choice == 3:
-        print(interaction1.edit())
-    else:
-        print(interaction1.delete())
+    while True:
+        choice = int(input('Choose among the following. \n 1.Create \n 2.Read \n 3.Edit \n 4.Delete \n 5.Exit '))
+        if choice == 1:
+            print(interaction1.create())
+        elif choice == 2:
+            print(interaction1.Read())
+        elif choice == 3:
+            print(interaction1.edit())
+        elif choice == 4:
+            print(interaction1.delete())
+        else:
+            print('Exiting the Program!')
+            break
 
 menu()
 
