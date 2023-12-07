@@ -21,10 +21,10 @@ class Interaction:
         manager1 = Resource_management.manager()
         if choice == 1:
             bookID = int(input('Enter the ID of the book that you want to find: '))             
-            print(manager1.search(bookID))
+            print(manager1.search(choice, bookID))
         elif choice == 2:
             bookname = input('Enter the name of the book: ')
-            print(manager1.search(bookname))
+            print(manager1.search(choice, bookname))
         else:
             print('Invalid choice!')   
     def edit(self):
@@ -43,6 +43,26 @@ class Interaction:
 
 
 interaction1 = Interaction()
-print(interaction1.create())
+def menu():
+    choice = int(input('Choose among the following. \n 1.Create \n 2.Read \n 3.Edit \n 4.Delete'))
+    if choice == 1:
+        print(interaction1.create())
+    elif choice == 2:
+        print(interaction1.Read())
+    elif choice == 3:
+        print(interaction1.edit())
+    else:
+        print(interaction1.delete())
+
+menu()
+
+
+
+
+
+
+
+
+
              
         
