@@ -1,35 +1,51 @@
 class manager: 
-    def __init__(self):
+    def __init__(self, BookID, Bookname, Author, Language, Availability):
         self._collection = []
-    def addbook(self, book = {}):
-        self._collection.append(book)
+        self._bookID = BookID
+        self._bookname = Bookname
+        self._author = Author
+        self._language = Language
+        self._availability = Availability
+    def getbookID(self):
+        return self._bookID
+    def getbookName(self):
+        return self._bookname
+    def getAuthor(self):
+        return self._author  
+    def addbook(self, book_object):
+        self._collection.append(book_object)
         return self._collection
+
     def search(self, choice, book_attribute):
         if choice == 1:
             for book in self._collection:
-                if book[0] == book_attribute:
-                    return (f"{book[1]} by {book[5]} is available.")
+                if (book.getbookID() == book_attribute):
+                    return (f"{book.getbookName()} by the author {book.getAuthor()} is available.")
                 else:
-                    return 'Book Not Found'
+                    return "Book not found!"
         elif choice == 2:
             for book in self._collection:
-                if book[1] == book_attribute:
-                    return (f"{book[1]} by {book[5]} is available.")
+                if (book.getbookName() == book_attribute):
+                    return (f"{book.getbookName()} by the author {book.getAuthor()} is available.")
                 else:
-                    return 'Book Not Found'
+                    return book.getbookName()
         else:
             return 'Invalid Book attribute!'
     def Edit(self, bookID, bookname, subject, language, authorname, date):
         for book in self._collection:
             if book[0] == bookID:
                 book = {'Book ID' : bookID, 'Book Name' : bookname, 'Subject' : subject, 'Language' : language, 'Author name' : authorname, 'Date of publication' : date}
-                return book
-        return self._collection
+                return self._collection
+            else:
+                return 'Book not found!'
     def delete(self, bookID):
         for book in self._collection:
             if book[0] == bookID:
-                print(book.pop(bookID))
-            return self._collection
+                book.pop(bookID)
+                return self._collection
+            else:
+                return 'Book not found!'
+                
     def getlist(self):
         return self._collection
 
