@@ -3,8 +3,8 @@ class Interaction:
     def __init__(self):
         print('Welcome to the Library system!')
         self.newbook = None
-    def create(self, book_ID, book_name, Author_name, Language, Date_of_publication):
-        self.newbook = Resource_management.manager(book_ID, book_name, Author_name, Language, Date_of_publication )
+    def create(self, book_ID, book_name, Author_name, Language, Date_of_publication, status):
+        self.newbook = Resource_management.manager(book_ID, book_name, Author_name, Language, Date_of_publication, status )
         manager1.addbook(self.newbook)
         
     def Read(self):
@@ -19,14 +19,12 @@ class Interaction:
         else:
             print('Invalid choice!')   
     def edit(self):
-        select_book = int(input('Enter Book ID: '))
+        select_bookID = int(input('Enter Book ID: '))
         newbookname = input('Enter new book name: ')
-        newsubject = input('Enter new subject: ')
         newLanguage = input('Enter the new language: ')
         newAuthor = input("Enter the new book's Author's name: ")
         newDate = input('Enter the new date: ')
-        manager1 = Resource_management.manager()
-        print(manager1.Edit(select_book, newbookname, newsubject, newLanguage, newAuthor, newDate))
+        print(manager1.Edit(select_bookID, newbookname, newAuthor, newLanguage, newDate))
     def delete(self):
         bookID = int(input('Enter the book ID: '))
         manager1 = Resource_management.manager()
@@ -42,8 +40,9 @@ while True:
     Language = input('Enter the language of the book: ')
     Author_name = input('Enter the name of the Author: ')
     Date_of_publication = input('Enter the date of publication: ')
-    manager1 = Resource_management.manager(book_ID, book_name, Author_name, Language, Date_of_publication )
-    print(interaction1.create(book_ID, book_name, Author_name, Language, Date_of_publication))
+    status = input('Available: ')
+    manager1 = Resource_management.manager(book_ID, book_name, Author_name, Language, Date_of_publication, status)
+    print(interaction1.create(book_ID, book_name, Author_name, Language, Date_of_publication, status))
     add_more = input('Do you want to add more books to the Library? y/n: ')
     i+=1
     if add_more.lower() == 'n':
@@ -57,8 +56,9 @@ def menu():
             Language = input('Enter the language of the book: ')
             Author_name = input('Enter the name of the Author: ')
             Date_of_publication = input('Enter the date of publication: ')
-            manager1 = Resource_management.manager(book_ID, book_name, Author_name, Language, Date_of_publication )
-            print(interaction1.create(book_ID, book_name, Author_name, Language, Date_of_publication))
+            status = input('Available')
+            manager1 = Resource_management.manager(book_ID, book_name, Author_name, Language, Date_of_publication, status)
+            print(interaction1.create(book_ID, book_name, Author_name, Language, Date_of_publication, status))
         elif choice == 2:
             print(interaction1.Read())
         elif choice == 3:

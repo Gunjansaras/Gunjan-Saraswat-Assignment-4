@@ -1,17 +1,28 @@
 class manager: 
-    def __init__(self, BookID, Bookname, Author, Language, Availability):
+    def __init__(self, BookID, Bookname, Author, Language, Date_of_publication, Availability):
         self._collection = []
         self._bookID = BookID
         self._bookname = Bookname
         self._author = Author
         self._language = Language
+        self._DOP = Date_of_publication
         self._availability = Availability
     def getbookID(self):
         return self._bookID
     def getbookName(self):
         return self._bookname
     def getAuthor(self):
-        return self._author  
+        return self._author
+    def setbookName(self, newbookName):
+        self._bookname = newbookName
+    def setAuthor(self, newAuthor):
+        self._author = newAuthor
+    def setLanguage(self, newLanguage):
+        self._language = newLanguage
+    def setDOP(self, newDOP):
+        self._DOP = newDOP
+    def set_status(self, newstatus):
+        self._availability = newstatus
     def addbook(self, book_object):
         self._collection.append(book_object)
         return self._collection
@@ -31,13 +42,13 @@ class manager:
                     return book.getbookName()
         else:
             return 'Invalid Book attribute!'
-    def Edit(self, bookID, bookname, subject, language, authorname, date):
+    def Edit(self, bookID, newbookname, newauthorname, newlanguage, newdate):
         for book in self._collection:
-            if book[0] == bookID:
-                book = {'Book ID' : bookID, 'Book Name' : bookname, 'Subject' : subject, 'Language' : language, 'Author name' : authorname, 'Date of publication' : date}
-                return self._collection
-            else:
-                return 'Book not found!'
+            if book.getbookID() == bookID:
+                book.setbookName(newbookname)
+                book.setLanguage(newlanguage)
+                book.setAuthor(newauthorname)
+                book.setDOP(newdate)
     def delete(self, bookID):
         for book in self._collection:
             if book[0] == bookID:
