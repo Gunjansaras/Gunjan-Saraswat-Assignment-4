@@ -51,9 +51,10 @@ class manager:
                 book.setDOP(newdate)
     def delete(self, bookID):
         for book in self._collection:
-            if book[0] == bookID:
-                book.pop(bookID)
-                return self._collection
+            if book.getbookID() == bookID:
+                self._collection.remove(book)
+                return 'Now Unavailable!'
+        
             else:
                 return 'Book not found!'
                 

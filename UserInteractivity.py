@@ -27,7 +27,6 @@ class Interaction:
         print(manager1.Edit(select_bookID, newbookname, newAuthor, newLanguage, newDate))
     def delete(self):
         bookID = int(input('Enter the book ID: '))
-        manager1 = Resource_management.manager()
         print(manager1.delete(bookID))
 
 
