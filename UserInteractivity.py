@@ -1,6 +1,7 @@
 import csv
 import Resource_management 
 import Data_persistance
+import Resources
 class Interaction:
     def __init__(self):
         print('Welcome to the Library system!')
@@ -28,9 +29,12 @@ class Interaction:
         newAuthor = input("Enter the new book's Author's name: ")
         newDate = input('Enter the new date: ')
         print(manager1.Edit(select_bookID, newbookname, newAuthor, newLanguage, newDate))
+        newbook = [select_bookID, newbookname, newAuthor, newLanguage, newDate, 'Available']
+        addbook = csvfileopen.enterdata(newbook)
     def delete(self):
-        bookID = int(input('Enter the book ID: '))
-        print(manager1.delete(bookID))
+        bookname = int(input('Enter the book name: '))
+        print(manager1.delete(bookname))
+        deletebook = csvfileopen.delete_data(bookname)
 
 
 
@@ -45,7 +49,7 @@ while True:
     Language = input('Enter the language of the book: ')
     Author_name = input('Enter the name of the Author: ')
     Date_of_publication = input('Enter the date of publication: ')
-    status = input('Available or not?: ')
+    status = 'Available'
     manager1 = Resource_management.manager(book_ID, book_name, Author_name, Language, Date_of_publication, status)
     print(interaction1.create(book_ID, book_name, Author_name, Language, Date_of_publication, status))
     add_more = input('Do you want to add more books to the Library? y/n: ')
@@ -61,7 +65,7 @@ def menu():
             Language = input('Enter the language of the book: ')
             Author_name = input('Enter the name of the Author: ')
             Date_of_publication = input('Enter the date of publication: ')
-            status = input('Available')
+            status = 'Available'
             manager1 = Resource_management.manager(book_ID, book_name, Author_name, Language, Date_of_publication, status)
             print(interaction1.create(book_ID, book_name, Author_name, Language, Date_of_publication, status))
         elif choice == 2:
@@ -74,7 +78,32 @@ def menu():
             print('Exiting the Program!')
             break
 
+
+def resources_menu():
+    while True:
+        choice = int(input('Choose among the following. \n 1.List the books \n 2.Issue a book \n 3.Return a book \n 4.Exit.'))
+        if choice == 1:
+            print(resources.list_resources())
+        elif choice == 2:
+            bookname = input('Enter the name of the book that you want to issue: ')
+            bookauthor = input('Enter the name of the author of the book: ')
+            print(resources.check_out(bookname, bookauthor))
+        elif choice == 3:
+            book_ID = int(input('Enter Book ID: '))
+            book_name = input('Enter book name: ')
+            Language = input('Enter the language of the book: ')
+            Author_name = input('Enter the name of the Author: ')
+            Date_of_publication = input('Enter the date of publication: ')
+            status = 'Available'
+            book = [book_ID, book_name, Author_name, Language, Date_of_publication, status]
+            print(resources.returnbook(book_name, Author_name, book))
+        else:
+            print('Exiting the program!')
+            break
+
 menu()
+resources = Resources.use_resources()
+resources_menu()
 
 
 

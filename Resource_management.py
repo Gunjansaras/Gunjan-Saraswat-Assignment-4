@@ -50,12 +50,11 @@ class manager:
                 book.setLanguage(newlanguage)
                 book.setAuthor(newauthorname)
                 book.setDOP(newdate)
-    def delete(self, bookID):
+    def delete(self, bookname):
         for book in self._collection:
-            if book.getbookID() == bookID:
+            if book.getbookName() == bookname:
                 self._collection.remove(book)
-                return 'Now Unavailable!'
-        
+                return 'Book Removed!'
             else:
                 return 'Book not found!'
     def getlist(self):

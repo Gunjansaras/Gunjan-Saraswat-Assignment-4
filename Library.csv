@@ -1,4 +1,6 @@
  BookID  BookName  Author  Language  Date of publication  Status 
-101,origin,dan brown,english,2006,yes
-102,2 states,chetan,eng;ish,2007,yes
-101,vampire ,gunjan,english,2005,yes
+101,origin,dan brown,english,2005,Available
+192,baby,vidhu,english,2006,Available
+103,yash,kamina,english,2006,Available
+104,goodmorning,gunjan,english,2007,Available
+103,hamsafar,vohtha,english,2007,Available
