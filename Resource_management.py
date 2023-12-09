@@ -1,3 +1,4 @@
+
 class manager: 
     def __init__(self, BookID, Bookname, Author, Language, Date_of_publication, Availability):
         self._collection = []
@@ -57,9 +58,10 @@ class manager:
         
             else:
                 return 'Book not found!'
-                
     def getlist(self):
         return self._collection
+                
+
 
 
             

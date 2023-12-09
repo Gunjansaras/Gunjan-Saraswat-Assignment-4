@@ -1,4 +1,6 @@
+import csv
 import Resource_management 
+import Data_persistance
 class Interaction:
     def __init__(self):
         print('Welcome to the Library system!')
@@ -6,10 +8,11 @@ class Interaction:
     def create(self, book_ID, book_name, Author_name, Language, Date_of_publication, status):
         self.newbook = Resource_management.manager(book_ID, book_name, Author_name, Language, Date_of_publication, status )
         manager1.addbook(self.newbook)
+        addbookdetails = [book_ID, book_name, Author_name, Language, Date_of_publication, status]        
+        addbook = csvfileopen.enterdata(addbookdetails)
         
     def Read(self):
         choice = int(input('By which attribute do you want to find the book 1.BookID 2.Bookname? '))
-        
         if choice == 1:
             bookID = int(input('Enter the ID of the book that you want to find: '))             
             print(manager1.search(choice, bookID))
@@ -30,7 +33,10 @@ class Interaction:
         print(manager1.delete(bookID))
 
 
+
+
 interaction1 = Interaction()
+csvfileopen = Data_persistance
 i = 1
 while True:
     print(f"Entering book {i} details")
@@ -39,7 +45,7 @@ while True:
     Language = input('Enter the language of the book: ')
     Author_name = input('Enter the name of the Author: ')
     Date_of_publication = input('Enter the date of publication: ')
-    status = input('Available: ')
+    status = input('Available or not?: ')
     manager1 = Resource_management.manager(book_ID, book_name, Author_name, Language, Date_of_publication, status)
     print(interaction1.create(book_ID, book_name, Author_name, Language, Date_of_publication, status))
     add_more = input('Do you want to add more books to the Library? y/n: ')
