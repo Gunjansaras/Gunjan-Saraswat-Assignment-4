@@ -36,13 +36,13 @@ class manager:
                 if (book.getbookID() == book_attribute):
                     return (f"{book.getbookName()} by {book.getAuthor()} - Available.")
                 else:
-                    return book.getbookID()
+                    return 'Book not found'
         elif choice == 2:
             for book in self._collection:
                 if (book.getbookName() == book_attribute):
                     return (f"{book.getbookName()} by {book.getAuthor()} - Available.")
                 else:
-                    return book.getbookName()
+                    return 'Book not found'
         else:
             return 'Invalid Book attribute!'
     def Edit(self, bookID, newbookname, newauthorname, newlanguage, newdate):

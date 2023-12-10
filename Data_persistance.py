@@ -1,4 +1,4 @@
-
+import pandas as pd 
 import csv
 
 f1 = open('Library.csv' , 'w', newline='')
@@ -14,20 +14,20 @@ def enterdata(book):
     f1.close()
 
       
-
+def edit_data(bookID, bookname, Newvalue):
+    f1 = pd.read_csv('Library.csv')
+    f1.loc[bookID, 'BookName'] = Newvalue
+    f1.to_csv('Library.csv' , index = False)
+    print(f1)
 
 def delete_data(bookname):
-    f1 = open('Library.csv', 'r')
-    f2 = open('Library.csv', 'w', newline='')
-    writer = csv.writer(f2)
-    reader = csv.reader(f1)
-    for row in reader:
-        if row[1] != bookname:
-            writer.writerow(row)
-    f1.close()
-    f2.close()
-            
+    f1 = pd.read_csv('Library.csv' , index_col='BookName')
+    f1 = f1.drop(f1[f1.BookName == bookname].index)
+    f1.to_csv('Library.csv', index=False)
 
+
+
+   
     
 
 
