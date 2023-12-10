@@ -14,6 +14,8 @@ class manager:
         return self._bookname
     def getAuthor(self):
         return self._author
+    def getdate(self):
+        return self._DOP
     def setbookName(self, newbookName):
         self._bookname = newbookName
     def setAuthor(self, newAuthor):
@@ -32,13 +34,13 @@ class manager:
         if choice == 1:
             for book in self._collection:
                 if (book.getbookID() == book_attribute):
-                    return (f"{book.getbookName()} by the author {book.getAuthor()} is available.")
+                    return (f"{book.getbookName()} by {book.getAuthor()} - Available.")
                 else:
-                    return "Book not found!"
+                    return book.getbookID()
         elif choice == 2:
             for book in self._collection:
                 if (book.getbookName() == book_attribute):
-                    return (f"{book.getbookName()} by the author {book.getAuthor()} is available.")
+                    return (f"{book.getbookName()} by {book.getAuthor()} - Available.")
                 else:
                     return book.getbookName()
         else:

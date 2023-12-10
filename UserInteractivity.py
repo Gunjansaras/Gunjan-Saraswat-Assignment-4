@@ -30,9 +30,9 @@ class Interaction:
         newDate = input('Enter the new date: ')
         print(manager1.Edit(select_bookID, newbookname, newAuthor, newLanguage, newDate))
         newbook = [select_bookID, newbookname, newAuthor, newLanguage, newDate, 'Available']
-        addbook = csvfileopen.enterdata(newbook)
+        addbook = csvfileopen.editdata(select_bookID, newbook)
     def delete(self):
-        bookname = int(input('Enter the book name: '))
+        bookname = input('Enter the book name: ')
         print(manager1.delete(bookname))
         deletebook = csvfileopen.delete_data(bookname)
 
@@ -41,42 +41,40 @@ class Interaction:
 
 interaction1 = Interaction()
 csvfileopen = Data_persistance
-i = 1
+
+book1 = [101, 'Origin', 'Dan Brown', 'English', 2017, 'Available']
+manager1 = Resource_management.manager(101, 'Origin', 'Dan Brown', 'English', 2017, 'Available')
+interaction1.create(101, 'Origin', 'Dan Brown', 'English', 2017, 'Available')
+print('Origin by Dan brown (2017) - Available')
+
+
+book2 = [102, 'Pride & Prejudice', 'Jane Austen', 'English', 1813, 'Available']
+manager1 = Resource_management.manager(102, 'Pride & Prejudice', 'Jane Austen', 'English', 1813, 'Available')
+interaction1.create(102, 'Pride & Prejudice', 'Jane Austen', 'English', 1813, 'Available')
+print('Pride & Prejudice by Jane Austen (1813) - Available.')
+
+
+
 while True:
-    print(f"Entering book {i} details")
-    book_ID = int(input('Enter Book ID: '))
-    book_name = input('Enter book name: ')
-    Language = input('Enter the language of the book: ')
-    Author_name = input('Enter the name of the Author: ')
-    Date_of_publication = input('Enter the date of publication: ')
-    status = 'Available'
-    manager1 = Resource_management.manager(book_ID, book_name, Author_name, Language, Date_of_publication, status)
-    print(interaction1.create(book_ID, book_name, Author_name, Language, Date_of_publication, status))
-    add_more = input('Do you want to add more books to the Library? y/n: ')
-    i+=1
-    if add_more.lower() == 'n':
+    choice = int(input('Choose among the following. \n 1.Create \n 2.Read \n 3.Edit \n 4.Delete \n 5.Exit '))
+    if choice == 1:
+        book_ID = int(input('Enter Book ID: '))
+        book_name = input('Enter book name: ')
+        Language = input('Enter the language of the book: ')
+        Author_name = input('Enter the name of the Author: ')
+        Date_of_publication = input('Enter the date of publication: ')
+        status = 'Available'
+        manager1 = Resource_management.manager(book_ID, book_name, Author_name, Language, Date_of_publication, status)
+        print(interaction1.create(book_ID, book_name, Author_name, Language, Date_of_publication, status))
+    elif choice == 2:
+        print(interaction1.Read())
+    elif choice == 3:
+        print(interaction1.edit())
+    elif choice == 4:
+        print(interaction1.delete())
+    else:
+        print('Exiting the Program!')
         break
-def menu():
-    while True:
-        choice = int(input('Choose among the following. \n 1.Create \n 2.Read \n 3.Edit \n 4.Delete \n 5.Exit '))
-        if choice == 1:
-            book_ID = int(input('Enter Book ID: '))
-            book_name = input('Enter book name: ')
-            Language = input('Enter the language of the book: ')
-            Author_name = input('Enter the name of the Author: ')
-            Date_of_publication = input('Enter the date of publication: ')
-            status = 'Available'
-            manager1 = Resource_management.manager(book_ID, book_name, Author_name, Language, Date_of_publication, status)
-            print(interaction1.create(book_ID, book_name, Author_name, Language, Date_of_publication, status))
-        elif choice == 2:
-            print(interaction1.Read())
-        elif choice == 3:
-            print(interaction1.edit())
-        elif choice == 4:
-            print(interaction1.delete())
-        else:
-            print('Exiting the Program!')
-            break
 
 
 def resources_menu():
@@ -97,11 +95,12 @@ def resources_menu():
             status = 'Available'
             book = [book_ID, book_name, Author_name, Language, Date_of_publication, status]
             print(resources.returnbook(book_name, Author_name, book))
+            interaction1.delete()
         else:
             print('Exiting the program!')
             break
 
-menu()
+
 resources = Resources.use_resources()
 resources_menu()
 

@@ -1,6 +1,3 @@
- BookID  BookName  Author  Language  Date of publication  Status 
-101,origin,dan brown,english,2005,Available
-192,baby,vidhu,english,2006,Available
-103,yash,kamina,english,2006,Available
-104,goodmorning,gunjan,english,2007,Available
-103,hamsafar,vohtha,english,2007,Available
+BookID,BookName,Author,Language,Date of publication,Status
+101,Origin,Dan Brown,English,2017,Available
+102,Pride & Prejudice,Jane Austen,English,1813,Available
