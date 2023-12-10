@@ -15,20 +15,56 @@ class Interaction:
     def Read(self):
         choice = int(input('By which attribute do you want to find the book 1.BookID 2.Bookname? '))
         if choice == 1:
-            bookID = int(input('Enter the ID of the book that you want to find: '))             
+            try:
+                bookID = int(input('Enter the ID of the book that you want to find: '))
+            except ValueError:
+                bookID = int(input('Invalid choice! Enter the ID of the book again: '))            
             print(manager1.search(choice, bookID))
         elif choice == 2:
-            bookname = input('Enter the name of the book: ')
+            try:
+                bookname = input('Enter the name of the book: ')
+                if bookname.isdigit() == True:
+                    raise ValueError
+            except:
+                bookname = input('Invalid choice! Enter the name of the book again: ')
             print(manager1.search(choice, bookname))
         else:
             print('Invalid choice!')   
     def edit(self):
-        select_bookID = int(input('Enter Book ID: '))
-        newbookname = input('Enter new book name: ')
-        newLanguage = input('Enter the new language: ')
-        newAuthor = input("Enter the new book's Author's name: ")
-        newDate = input('Enter the new date: ')
-        print(manager1.Edit(select_bookID, newbookname, newAuthor, newLanguage, newDate))
+        try:
+            select_bookID = int(input('Enter Book ID: '))
+        except ValueError:
+            print('Invalid input, Try again!')
+            select_bookID = int(input('Enter Book ID again: '))
+        try:
+            newbookname = input('Enter book name: ')
+            if newbookname.isdigit() == True:
+                raise ValueError
+        except ValueError:
+            print('Invalid input, Try again!')
+            newbookname = input('Enter book name again: ')
+        try:
+            newLanguage = input('Enter the language of the book: ')
+            if Language.isdigit() == True:
+                raise ValueError
+        except ValueError:
+            print('Invalid input, Try again!')
+            newLanguage = input('Enter the language of the book again: ')
+        try:
+            newAuthor = input('Enter the name of the Author: ')
+            if newAuthor.isdigit() == True:
+                raise ValueError
+        except ValueError:
+            print('Invalid input, Try again!')
+            newAuthor = input('Enter the name of the Author again: ')
+        try:
+            newDate = input('Enter the date of publication: ')
+            if newDate.isalpha() == True:
+                raise ValueError
+        except ValueError:
+            print('Invalid input, Try again!')
+            newDate = input('Enter the date of publication again: ') 
+            print(manager1.Edit(select_bookID, newbookname, newAuthor, newLanguage, newDate))
         newbook = [select_bookID, newbookname, newAuthor, newLanguage, newDate, 'Available']
         addbook = csvfileopen.editdata(select_bookID, newbook)
     def delete(self):
@@ -58,11 +94,40 @@ print('Pride & Prejudice by Jane Austen (1813) - Available.')
 while True:
     choice = int(input('Choose among the following. \n 1.Create \n 2.Read \n 3.Edit \n 4.Delete \n 5.Exit '))
     if choice == 1:
-        book_ID = int(input('Enter Book ID: '))
-        book_name = input('Enter book name: ')
-        Language = input('Enter the language of the book: ')
-        Author_name = input('Enter the name of the Author: ')
-        Date_of_publication = input('Enter the date of publication: ')
+        try:
+            book_ID = int(input('Enter Book ID: '))
+        except ValueError:
+            print('Invalid input, Try again!')
+            book_ID = int(input('Enter Book ID again: '))
+        try:
+            book_name = input('Enter book name: ')
+            if book_name.isdigit() == True:
+                raise ValueError
+        except ValueError:
+            print('Invalid input, Try again!')
+            book_name = input('Enter book name again: ')
+        try:
+            Language = input('Enter the language of the book: ')
+            if Language.isdigit() == True:
+                raise ValueError
+        except ValueError:
+            print('Invalid input, Try again!')
+            Language = input('Enter the language of the book again: ')
+        try:
+            Author_name = input('Enter the name of the Author: ')
+            if Author_name.isdigit() == True:
+                raise ValueError
+        except ValueError:
+            print('Invalid input, Try again!')
+            Author_name = input('Enter the name of the Author again: ')
+        try:
+            Date_of_publication = input('Enter the date of publication: ')
+            if Date_of_publication.isalpha() == True:
+                raise ValueError
+        except ValueError:
+            print('Invalid input, Try again!')
+            Date_of_publication = input('Enter the date of publication again: ')   
+   
         status = 'Available'
         manager1 = Resource_management.manager(book_ID, book_name, Author_name, Language, Date_of_publication, status)
         print(interaction1.create(book_ID, book_name, Author_name, Language, Date_of_publication, status))
@@ -102,8 +167,6 @@ def resources_menu():
 
 resources = Resources.use_resources()
 resources_menu()
-
-
 
 
 

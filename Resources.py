@@ -20,6 +20,12 @@ class use_resources:
                     pass
             else:
                 return (f"{row['BookName']} by {row['Author']} - Unavailable.")
+    def returnbook(self, book):
+        with open('Library.csv', 'w') as f1:
+            data = csv.writer(f1)
+            data.writerow(book)
+            print(book[1], 'by', book[2], '- Returned successfully')
+    
                     
 
 
