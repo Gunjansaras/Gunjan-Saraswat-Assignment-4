@@ -14,17 +14,17 @@ def enterdata(book):
     f1.close()
 
 def editdata(bookID,  newbook):
-    f1 = open('Library.csv' , 'w', newline='')
-    f2 = open('Library.csv', 'r')
-    writer = csv.writer(f1)
-    reader = csv.reader(f2)
-    for book in reader:
-        if book[0] == bookID:
-            writer.writerow(newbook)
-        else:
-            writer.writerow(book)
-    f1.close()
-    f2.close()
+    with open('Library.csv', 'r') as file1:
+        reader = csv.DictReader(file1)
+        with open('Library.csv' , 'w') as file2:
+            writer = csv.writer(file2)
+            for row in reader:
+                if row['BookID'] == bookID:
+                    writer.writerow(newbook)
+                else:
+                    writer.writerow(row)
+        
+ 
 
 
 def delete_data(bookname):

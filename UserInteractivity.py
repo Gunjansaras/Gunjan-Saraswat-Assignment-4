@@ -84,8 +84,7 @@ def resources_menu():
             print(resources.list_resources())
         elif choice == 2:
             bookname = input('Enter the name of the book that you want to issue: ')
-            bookauthor = input('Enter the name of the author of the book: ')
-            print(resources.check_out(bookname, bookauthor))
+            print(resources.check_out(bookname))
         elif choice == 3:
             book_ID = int(input('Enter Book ID: '))
             book_name = input('Enter book name: ')

@@ -9,3 +9,24 @@ class use_resources:
             for book in data:
                 print(book['BookName'], 'by', book['Author'], '- Available.')
             
+    def check_out(self, bookname):
+        with open('Library.csv' , 'r') as f1:
+            data = csv.DictReader(f1)
+            for row in data:
+                if row['BookName'] == bookname:
+                    csvfile.delete_data(bookname)
+                    return(f"{row['BookName']} by {row['Author']} - Issued successfully.")
+                else:
+                    pass
+            else:
+                return (f"{row['BookName']} by {row['Author']} - Unavailable.")
+                    
+
+
+    
+    
+
+
+
+    
+    
