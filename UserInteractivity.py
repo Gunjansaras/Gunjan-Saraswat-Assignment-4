@@ -1,3 +1,4 @@
+#importing necessary modules 
 import csv
 import Resource_management 
 import Data_persistance
@@ -73,11 +74,10 @@ class Interaction:
         deletebook = csvfileopen.delete_data(bookname)
 
 
-
-
 interaction1 = Interaction()
 csvfileopen = Data_persistance
 
+#ready test cases 
 book1 = [101, 'Origin', 'Dan Brown', 'English', 2017, 'Available']
 manager1 = Resource_management.manager(101, 'Origin', 'Dan Brown', 'English', 2017, 'Available')
 interaction1.create(101, 'Origin', 'Dan Brown', 'English', 2017, 'Available')
@@ -90,9 +90,12 @@ interaction1.create(102, 'Pride & Prejudice', 'Jane Austen', 'English', 1813, 'A
 print('Pride & Prejudice by Jane Austen (1813) - Available.')
 
 
-
 while True:
-    choice = int(input('Choose among the following. \n 1.Create \n 2.Read \n 3.Edit \n 4.Delete \n 5.Exit '))
+    try:
+        choice = int(input('Choose among the following. \n 1.Create \n 2.Read \n 3.Edit \n 4.Delete \n 5.Exit '))
+    except ValueError:
+        print('invalid choice! Enter in numeric value only.')
+        choice = int(input('Choose among the following. \n 1.Create \n 2.Read \n 3.Edit \n 4.Delete \n 5.Exit '))
     if choice == 1:
         try:
             book_ID = int(input('Enter Book ID: '))
@@ -141,10 +144,14 @@ while True:
         print('Exiting the Program!')
         break
 
-
+#resources menu, accessing functions in the resources module.
 def resources_menu():
     while True:
-        choice = int(input('Choose among the following. \n 1.List the books \n 2.Issue a book \n 3.Return a book \n 4.Exit.'))
+        try:
+            choice = int(input('Choose among the following. \n 1.List the books \n 2.Issue a book \n 3.Return a book \n 4.Exit.'))
+        except ValueError:
+            print('Invalid choice! Enter a numeric value only.')
+            choice = int(input('Choose among the following. \n 1.List the books \n 2.Issue a book \n 3.Return a book \n 4.Exit.'))
         if choice == 1:
             print(resources.list_resources())
         elif choice == 2:
