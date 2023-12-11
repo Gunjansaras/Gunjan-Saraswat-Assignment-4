@@ -29,7 +29,6 @@ class manager:      #class manager
     def addbook(self, book_object):
         self._collection.append(book_object)
         return self._collection
-
     def search(self, choice, book_attribute):
         if choice == 1:                            #searching inside the collection(nested lists)
             for book in self._collection:

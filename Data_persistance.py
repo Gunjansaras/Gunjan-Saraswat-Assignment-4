@@ -9,7 +9,7 @@ f1.close()      #write row of header
 
 def enterdata(book):     #entering data in the form of lists 
     f1 = open('Library.csv' , 'a', newline='')
-    data =data = csv.writer(f1)
+    data = csv.writer(f1)
     data.writerow(book)
     f1.close()
 
